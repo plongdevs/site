@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from biianhlong.io.vn/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Oct 2025 01:25:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    
+    <link rel="icon" href="2.ico" type="image/x-icon"> 
+    
+    <style>
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: contain; /* Giữ nguyên khung hình gốc */
+            background-color: black; /* Để tránh khoảng trống khi video không full màn */
+        }
+
+        #extra-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover; /* Vẫn hiển thị toàn màn hình */
+            display: none; /* Ẩn video thứ hai ban đầu */
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 100px;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 80%;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .popup h3 {
+            margin: 0;
+            font-size: 22px;
+            color: #333;
+        }
+
+        .popup p {
+            font-size: 16px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .popup button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .popup button:hover {
+            background: #0056b3;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <video id="bg-video" autoplay muted loop>
+        <source src="3.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    
+    <video id="extra-video" autoplay muted loop>
+        <source src="video1.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <audio id="backgroundMusic" loop>
+        <source src="nhac1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <h3>Welcome to my web!</h3>
+            <p></p>
+            <button onclick="closePopup()">Go</button>
+        </div>
+    </div>
+
+    <script>
+        function closePopup() {
+            document.getElementById("popupOverlay").style.display = "none";
+            var music = document.getElementById("backgroundMusic");
+            var extraVideo = document.getElementById("extra-video");
+            music.play();
+            extraVideo.style.display = "block"; 
+            toggleFullScreen();
+        }
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            }
+        }
+    </script>
+</body>
+
+<!-- Mirrored from biianhlong.io.vn/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Oct 2025 01:25:14 GMT -->
+</html>
